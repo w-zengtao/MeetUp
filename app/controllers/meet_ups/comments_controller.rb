@@ -6,7 +6,7 @@ module MeetUps
 
     def create
       @comment = @meet_up.comments.build(comment_params.merge(user_id: current_user.id))
-      @comment.index = @meet_up.comments.count + 1
+      # @comment.index = @meet_up.comments.count + 1
       @comment.save
     end
 
