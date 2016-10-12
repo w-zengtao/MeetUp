@@ -1,0 +1,22 @@
+<div>
+  <ul id="meet_up-list">
+    <%= render partial: 'meet_up', collection: @meet_ups, as: :meet_up %>
+  </ul>
+</div>
+<hr>
+<div>
+  <div class="new-meet_up-form">
+    <label>新建MeetUp</label>
+    <%= form_for :meet_up, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, placeholder: '请输入新建的MeetUp名' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: '请输入MeetUp详情' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit '新建MeetUp' %>
+      </div>
+    <% end %>
+  </div>
+</div>

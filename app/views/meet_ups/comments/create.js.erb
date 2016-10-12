@@ -1,0 +1,3 @@
+(function(){
+  $('#comments-list').append("<%= j(render(:partial => 'meet_ups/comments/comment', locals: { comment: @comment} )) %>");
+})();

@@ -1,0 +1,24 @@
+<div>
+  <div class="meet_up-title">
+    <h4> <%= @meet_up.title %> </h4>
+  </div>
+  <hr>
+  <div class="meet_up-content">
+    <%= @meet_up.content %>
+  </div>
+  <hr>
+  <div class="meet_up-comments-list">
+    <ul class="list-group" id="comments-list">
+      <%= render partial: 'meet_ups/comments/comment', collection: @comments, as: :comment %>
+    </ul>
+  </div>
+  <hr>
+  <%= form_for :comment, url: meet_up_comments_path(@meet_up), remote: true do |f| %>
+    <div class="form-group">
+      <%= f.text_field :content, placeholder: '请输入评论内容' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '添加评论'%>
+    </div>
+  <% end %>
+</div>

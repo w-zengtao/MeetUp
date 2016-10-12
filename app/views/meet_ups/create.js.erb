@@ -1,0 +1,3 @@
+(function(){
+  $('#meet_up-list').append("<%= j(render(:partial => 'meet_ups/meet_up', locals: { meet_up: @meet_up} )) %>");
+})();
