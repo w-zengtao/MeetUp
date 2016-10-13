@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :sessions, only: [:create, :destroy]
+  end
+
   root "meet_ups#index"
 end

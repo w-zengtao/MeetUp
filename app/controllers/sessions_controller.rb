@@ -1,7 +1,7 @@
 class SessionsController < BaseController
 
   def create
-    user = User.where(name: user_params[:name]).or(User.where(email: user_params[:email])).first.try(:authenticate, user_params[:password])
+    user = User.where(name: user_params[:name]).first.try(:authenticate, user_params[:password])
     if user
       sign_in(user)
       redirect_to root_path

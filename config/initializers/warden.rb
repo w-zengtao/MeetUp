@@ -1,13 +1,10 @@
-Rails.application.config.middleware.use Warden::Manager do |manager|
-  manager.default_strategies :api
+require Rails.root.join('lib/strategies/auth_token_strategy')
+
+# Warden::Manager.serialize_into_session do |user|
+#   user.id
+# end
+
+Warden::Manager.serialize_from_session do |id|
+  User.find_by(auth_token: id['auth_token'])
 end
-
-Warden::Strategies.add(:api) do
-  def valid?
-    params[:user_token]
-  end
-
-  def authenticate!
-
-  end
-end
+Warden::Strategies.add(:auth_token, AuthTokenStrategy)

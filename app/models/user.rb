@@ -11,6 +11,13 @@ class User < ApplicationRecord
   # callbacks
   before_validation :ensure_auth_token, on: :create
 
+  # methods
+  def refresh_token
+    self.auth_token = nil
+    ensure_auth_token
+    self.save
+  end
+
   private
   def ensure_auth_token
     if auth_token.blank?
