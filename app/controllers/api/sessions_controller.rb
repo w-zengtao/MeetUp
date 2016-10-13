@@ -1,7 +1,7 @@
 module Api
   class SessionsController < BaseController
 
-    before_action :authenticate_user
+    before_action :authenticate_user, only: [:destroy]
 
     def new
       render json: { status: 301 }
@@ -12,7 +12,7 @@ module Api
       if user
         render json: { user: { id: user.id, auth_token: user.auth_token}, status: 200 }
       else
-        render json: { status: 401 }
+        render json: { status: 404 }
       end
     end
 
